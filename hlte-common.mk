@@ -30,10 +30,6 @@ PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 TARGET_SCREEN_HEIGHT := 1920
 TARGET_SCREEN_WIDTH := 1080
 
-# Expose Irda feature
-#PRODUCT_COPY_FILES += \
-#    device/samsung/hlte-common/etc/com.sec.feature.irda_service.xml:system/etc/permissions/com.sec.feature.irda_service.xml
-
 # Audio configuration
 PRODUCT_COPY_FILES += \
     device/samsung/hlte-common/audio/mixer_paths.xml:system/etc/mixer_paths.xml \
@@ -91,10 +87,14 @@ PRODUCT_PACKAGES += \
     copybit.msm8974 \
     gralloc.msm8974 \
     hwcomposer.msm8974 \
+    memtrack.msm8974 \
     power.msm8974
+
+# AUdio
 PRODUCT_PACKAGES += \
     audio_policy.msm8974 \
-    audio.primary.msm8974
+    audio.primary.msm8974 \
+    audiod
 
 # Torch
 PRODUCT_PACKAGES += Torch
@@ -155,8 +155,6 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 # Lights
 PRODUCT_PACKAGES += lights.MSM8974
 
-# Irda
-#PRODUCT_PACKAGES += irda.msm8974
 
 # QC Perf
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -204,7 +202,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.rild.nitz_short_ons_1="" \
     persist.rild.nitz_short_ons_2="" \
     persist.rild.nitz_short_ons_3="" \
-    ro.telephony.ril.v3=newDriverCall
+    ro.telephony.ril.v3=newDriverCall,newDialCode
 
 # Wifi
 PRODUCT_COPY_FILES += \
