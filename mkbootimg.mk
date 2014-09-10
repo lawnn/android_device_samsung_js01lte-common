@@ -9,7 +9,7 @@ KERNEL_CONFIG := $(KERNEL_OUT)/.config
 G2_DTS_NAMES := msm8974
 
 ifeq ($(TARGET_KERNEL_DTS_FILES),"")
-G2_DTS_FILES = $(wildcard $(TOP)/$(TARGET_KERNEL_SOURCE)/arch/arm/boot/dts/msm8974/msm8974-sec-hlte-*.dts)
+G2_DTS_FILES = $(wildcard $(TOP)/$(TARGET_KERNEL_SOURCE)/arch/arm/boot/dts/msm8974/msm8974-sec-hltejpn*.dts)
 else
 G2_DTS_FILES = $(wildcard $(TOP)/$(TARGET_KERNEL_SOURCE)/arch/arm/boot/dts/$(TARGET_KERNEL_DTS_FILES)-*.dts)
 endif
