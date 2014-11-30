@@ -75,8 +75,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/ue_rf4ce_remote.kl:system/usr/keylayout/ue_rf4ce_remote.kl
 
 # Keystore
-PRODUCT_PACKAGES += \
-    keystore.msm8974
+#PRODUCT_PACKAGES += \
+#   keystore.msm8974
 
 # Lights
 PRODUCT_PACKAGES += \
@@ -102,6 +102,7 @@ PRODUCT_COPY_FILES += \
 # Ramdisk
 PRODUCT_PACKAGES += \
     fstab.qcom \
+    init.carrier.rc \
     init.crda.sh \
     init.qcom.rc \
     init.qcom.usb.rc \
