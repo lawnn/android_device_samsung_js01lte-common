@@ -5,7 +5,18 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.audio.fluence.voicerec=false \
     ro.qc.sdk.audio.fluencetype=fluence \
     use.voice.path.for.pcm.voip=false \
-    use.dedicated.device.for.voip=true
+    use.dedicated.device.for.voip=true \
+    mm.enable.smoothstreaming=true \
+    mm.enable.qcom_parser=3314291 \
+    av.streaming.offload.enable=true \
+    use.voice.path.for.pcm.voip=true \
+    audio.offload.multiple.enabled=false \
+    audio.offload.gapless.enabled=true \
+    tunnel.audio.encode=true \
+    media.aac_51_output_enabled=true \
+    audio.offload.pcm.16bit.enable=true \
+    audio.offload.pcm.24bit.enable=true  \
+    qcom.hw.aac.encoder=true
 
 # Display
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -20,6 +31,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.gps.agps_provider=1 \
     ro.qc.sdk.izat.premium_enabled=0 \
     ro.qc.sdk.izat.service_mask=0x0
+
+# perf api
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vendor.extension_library=/vendor/lib/libqti-perfd-client.so
 
 # NFC
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -40,3 +55,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Wifi
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0
+
+# Radio
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.ril.telephony.mqanelements=6 \
+    ro.telephony.ril_class=hlteRIL

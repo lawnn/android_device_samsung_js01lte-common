@@ -3,7 +3,6 @@ vendor/lib/libacdbloader.so
 vendor/lib/libacdbrtac.so
 vendor/lib/libadiertac.so
 vendor/lib/libaudcal.so
-vendor/lib/libcsd-client.so
 etc/Bluetooth_cal.acdb
 etc/General_cal.acdb
 etc/Handset_cal.acdb
@@ -11,13 +10,12 @@ etc/Global_cal.acdb
 etc/Hdmi_cal.acdb
 etc/Headset_cal.acdb
 etc/Speaker_cal.acdb
-
+vendor/lib/soundfx/libqcbassboost.so
+vendor/lib/soundfx/libqcvirt.so
+vendor/lib/soundfx/libqcreverb.so
 # Bluetooth firmware
-vendor/firmware/bcm4339.hcd
-vendor/firmware/bcm4339.hcd:vendor/firmware/bcm4335.hcd
-vendor/firmware/bcm4339_A0.hcd
-vendor/firmware/bcm4339_semco.hcd
-vendor/firmware/bcm4339_wisol.hcd
+vendor/firmware/bcm4335_V0093.0399_wisol.hcd
+vendor/firmware/bcm4335_V0093.0399.hcd
 
 # Camera chromatix
 etc/C13QL_s5k3l2xx_module_info.xml
@@ -233,23 +231,24 @@ bin/qseecomd
 lib/libdrmdecrypt.so
 lib/libhdcp2.so
 lib/libstagefright_hdcp.so
-vendor/lib/libWVStreamControlAPI_L3.so
-vendor/lib/libwvm.so
+vendor/lib/libWVStreamControlAPI_L1.so
+lib/libwvm.so
 vendor/lib/libdrmfs.so
 vendor/lib/libdrmtime.so
 vendor/lib/librpmb.so
 vendor/lib/libssd.so
 vendor/lib/libQSEEComAPI.so
-vendor/lib/libwvdrm_L3.so
-vendor/lib/drm/libdrmwvmplugin.so
+vendor/lib/libwvdrm_L1.so
+vendor/lib/liboemcrypto.so
 vendor/lib/mediadrm/libwvdrmengine.so
+lib/libdrmdecrypt.so
+lib/drm/libfwdlockengine.so
 
 # Graphics
 vendor/lib/egl/eglsubAndroid.so
 vendor/lib/egl/libEGL_adreno.so
 vendor/lib/egl/libGLESv1_CM_adreno.so
 vendor/lib/egl/libGLESv2_adreno.so
-vendor/lib/egl/libplayback_adreno.so
 vendor/lib/egl/libq3dtools_adreno.so
 vendor/lib/libadreno_utils.so
 vendor/lib/libC2D2.so
@@ -257,11 +256,12 @@ vendor/lib/libc2d30-a3xx.so
 vendor/lib/libCB.so
 vendor/lib/libgsl.so
 vendor/lib/libllvm-qcom.so
-vendor/lib/libOpenCL.so
 vendor/lib/librs_adreno.so
 vendor/lib/librs_adreno_sha1.so
 vendor/lib/libRSDriver_adreno.so
 vendor/lib/libsc-a3xx.so
+vendor/lib/libOpenCL.so
+
 
 # Graphics firmware
 etc/firmware/a330_pfp.fw
@@ -286,16 +286,13 @@ vendor/lib/libOmxQcelp13Dec.so
 vendor/lib/libOmxWmaDec.so
 vendor/lib/libSHIMDivxDrm.so
 
+
+
 # NFC
 vendor/firmware/bcm2079xB4_firmware.ncd
 vendor/firmware/bcm2079xB4_pre_firmware.ncd
 
-# Perf
-vendor/lib/libqc-opt.so
-
 # Postprocessing
--app/PPPreference.apk
-bin/mm-pp-daemon
 vendor/lib/libdisp-aba.so
 -vendor/lib/libmm-abl.so
 vendor/lib/libmm-abl-oem.so
@@ -306,8 +303,10 @@ lib/hw/sensors.msm8974.so
 lib/libsensirion_h_2.so
 
 # Time services
+-app/TimeService/TimeService.apk
 bin/time_daemon
 -vendor/lib/libtime_genoff.so
+vendor/lib/libTimeService.so
 
 # Wi-Fi
 etc/wifi/bcmdhd_apsta.bin
@@ -317,3 +316,6 @@ etc/wifi/cred.conf
 etc/wifi/nvram_mfg.txt
 etc/wifi/nvram_net.txt
 etc/wifi/wpa_supplicant.conf
+
+#perf api
+/vendor/lib/libqti-perfd-client.so
