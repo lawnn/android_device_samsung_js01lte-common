@@ -29,6 +29,7 @@ import init.qcom.usb.rc
 import init.target.rc
 
 on early-init
+    setprop sys.boot_completed 0
     write /sys/block/mmcblk0/queue/read_ahead_kb 512
     write /sys/block/mmcblk0/queue/scheduler noop
 
@@ -677,10 +678,6 @@ on property:sys.boot_completed=1
     write /sys/devices/system/cpu/cpu1/online 1
     write /sys/devices/system/cpu/cpu2/online 1
     write /sys/devices/system/cpu/cpu3/online 1
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
-    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor interactive
-    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor interactive
-    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor interactive
     write /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay "20000 1400000:40000 1700000:20000"
     write /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load 90
     write /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq 1497600
@@ -689,10 +686,10 @@ on property:sys.boot_completed=1
     write /sys/devices/system/cpu/cpufreq/interactive/min_sample_time 40000
     write /sys/devices/system/cpu/cpufreq/interactive/timer_rate 30000
     write /sys/devices/system/cpu/cpufreq/interactive/sampling_down_factor 100000
-    write /devices/system/cpu/cpu0/cpufreq/scaling_min_freq 300000
-    write /devices/system/cpu/cpu1/cpufreq/scaling_min_freq 300000
-    write /devices/system/cpu/cpu2/cpufreq/scaling_min_freq 300000
-    write /devices/system/cpu/cpu3/cpufreq/scaling_min_freq 300000
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 300000
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq 300000
+    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq 300000
+    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_min_freq 300000
     write /sys/module/msm_thermal/core_control/enabled 1
     write /sys/devices/system/cpu/cpufreq/interactive/up_threshold_any_cpu_load 75
     write /sys/devices/system/cpu/cpufreq/interactive/up_threshold_any_cpu_freq 1728000
@@ -713,9 +710,48 @@ on property:sys.boot_completed=1
     write /sys/module/cpu_boost/parameters/input_boost_ms 40
     write /sys/module/cpu_boost/parameters/plug_boost_freq 1728000
     write /sys/module/cpu_boost/parameters/plug_boost_ms 5
+    
+    # post boot
+    setprop sys.perf.profile 1
 
-    # Post boot services
+on property:sys.boot_completed=0
+    setprop sys.perf.profile 2
+
+# CM Performance Profiles
+on property:sys.perf.profile=0
+    write /sys/class/devfreq/qcom,cpubw.34/governor powersave
+    write /sys/class/devfreq/fdb00000.qcom,kgsl-3d0/governor powersave
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor conservative
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor conservative
+    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor conservative
+    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor conservative
+    write /sys/class/kgsl/kgsl-3d0/devfreq/governor powersave
     start mpdecision
+
+on property:sys.perf.profile=1
+    write /sys/class/devfreq/qcom,cpubw.34/governor msm_cpufreq
+    write /sys/class/devfreq/fdb00000.qcom,kgsl-3d0/governor msm-adreno-tz
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor interactive
+    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor interactive
+    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor interactive
+
+    write /sys/class/kgsl/kgsl-3d0/devfreq/governor msm-adreno-tz
+    start mpdecision
+
+on property:sys.perf.profile=2
+    stop mpdecision
+    write /sys/devices/system/cpu/cpu0/online 1
+    write /sys/devices/system/cpu/cpu1/online 1
+    write /sys/devices/system/cpu/cpu2/online 1
+    write /sys/devices/system/cpu/cpu3/online 1
+    write /sys/class/devfreq/qcom,cpubw.34/governor performance
+    write /sys/class/devfreq/fdb00000.qcom,kgsl-3d0/governor performance
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor performance
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor performance
+    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor performance
+    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor performance
+    write /sys/class/kgsl/kgsl-3d0/devfreq/governor performance
 
 service atfwd /system/bin/ATFWD-daemon
     class late_start
@@ -766,14 +802,6 @@ service battery_monitor /system/bin/battery_monitor
     user system
     group system
     disabled
-
-service ril-daemon1 /system/bin/rild -c 1
-    class main
-    socket rild1 stream 660 root radio
-    socket rild-debug1 stream 660 radio system
-    user root
-    disabled
-    group radio cache inet misc audio sdcard_r sdcard_rw qcom_oncrpc diag qcom_diag log
 
 service profiler_daemon /system/bin/profiler_daemon
     class late_start
