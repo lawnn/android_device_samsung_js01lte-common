@@ -62,6 +62,9 @@ PRODUCT_PACKAGES += \
     camera.msm8974 \
     libxml2
 
+PRODUCT_PACKAGES += \
+    CMSPen
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/gps/etc/gps.conf:/system/etc/gps.conf \
     $(LOCAL_PATH)/gps/etc/flp.conf:/system/etc/flp.conf \

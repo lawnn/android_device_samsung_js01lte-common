@@ -7,4 +7,9 @@
     "repository": "android_kernel_samsung_hlte",
     "target_path": "kernel/samsung/hlte"
   }
+  {
+    "account": "kbc-developers",
+    "repository": "android_packages_apps_CMSPen",
+    "target_path": "packages/apps/CMSPen"
+  }
 ]
