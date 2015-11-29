@@ -110,6 +110,10 @@ PRODUCT_PACKAGES += \
     nfc_nci.bcm2079x.msm8974 \
     Tag
 
+# Radio
+PRODUCT_PACKAGES += \
+    libril_shim
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/nfcee_access.xml:system/etc/nfcee_access.xml \
     $(LOCAL_PATH)/configs/libnfc-brcm-20791b05.conf:system/etc/libnfc-brcm-20791b05.conf \
