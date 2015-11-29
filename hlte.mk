@@ -67,7 +67,6 @@ PRODUCT_PACKAGES += \
 # camera
 PRODUCT_PACKAGES += \
     camera.msm8974 \
-    libstlport \
     libxml2
 
 PRODUCT_PACKAGES += \
