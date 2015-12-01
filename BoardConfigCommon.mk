@@ -37,7 +37,7 @@ TARGET_KERNEL_CONFIG := msm8974_sec_defconfig
 TARGET_KERNEL_SELINUX_CONFIG := selinux_defconfig
 TARGET_KERNEL_VARIANT_CONFIG := kbc_aosp_defconfig
 TARGET_KERNEL_SOURCE := kernel/samsung/hlte
-TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-linux-androideabi-
+#TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-linux-androideabi-
 
 # Audio
 QCOM_CSDCLIENT_ENABLED := false
@@ -94,7 +94,7 @@ TARGET_USERIMAGES_USE_F2FS := true
 
 # SELinux
 -include device/qcom/sepolicy/sepolicy.mk
-BOARD_SEPOLICY_DIRS += device/samsung/hlte-common/sepolicy
+#BOARD_SEPOLICY_DIRS += device/samsung/hlte-common/sepolicy
 
 # Wifi
 BOARD_HAVE_SAMSUNG_WIFI := true
