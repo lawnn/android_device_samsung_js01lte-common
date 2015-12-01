@@ -14,38 +14,33 @@
  * limitations under the License.
  */
 
-#define LOG_TAG "SEC_RIL_SHIM"
+#define LOG_TAG "RMT_STORAGE_SHIM"
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
+#include <sys/syscall.h>
+
+#include <linux/ioprio.h>
 
 #include <utils/Log.h>
 
-//various funcs we'll need to call, in their mangled form
-
-//android::Parcel::writeString16(char16_t const*, unsigned int)
-extern void _ZN7android6Parcel13writeString16EPKDsj(void **str16P,
-        uint16_t const *str, unsigned int len);
-
 //code exports we provide
 
-void _ZN7android6Parcel13writeString16EPKtj(void **str16P,
-        unsigned short const *str, unsigned int len);
+int ioprio_set(int which, int who, int ioprio);
 
 //library on-load and on-unload handlers (to help us set things up and tear them down)
 void libEvtLoading(void) __attribute__((constructor));
 void libEvtUnloading(void) __attribute__((destructor));
 
 /*
- * FUNCTION: android::Parcel::writeString16(unsigned short const*, unsigned int)
- * USE:      INTERPOSE: write String16 to binder
- * NOTES:    This function no longer exists in M, instead now one must pass
- *           in a char16_t instead of a short. M So we'll craft the same call here.
+ * FUNCTION: ioprio_set
+ * USE:      INTERPOSE: Remaps to syscall(SYS_ioprio_set, ...)
+ * NOTES:    This function no longer exists in M, instead remap this function
+ *           make the appropriate syscall instead.
  */
-void _ZN7android6Parcel13writeString16EPKtj(void **str16P,
-        unsigned short const *str, unsigned int len)
+int ioprio_set(int which, int who, int ioprio)
 {
-    _ZN7android6Parcel13writeString16EPKDsj(str16P, str, len);
+    return syscall(SYS_ioprio_set, which, who, ioprio);
 }
 
 /*
@@ -56,7 +51,7 @@ void _ZN7android6Parcel13writeString16EPKtj(void **str16P,
  */
 void libEvtLoading(void)
 {
-    ALOGV("libbinder interposition library loaded");
+    ALOGV("rmt_storage interposition library loaded");
 }
 
 /*
@@ -66,5 +61,5 @@ void libEvtLoading(void)
  */
 void libEvtUnloading(void)
 {
-    ALOGV("libbinder interposition library unloading. Goodbye...");
+    ALOGV("rmt_storage interposition library unloading. Goodbye...");
 }
