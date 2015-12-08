@@ -38,6 +38,7 @@ TARGET_KERNEL_SELINUX_CONFIG := selinux_defconfig
 TARGET_KERNEL_VARIANT_CONFIG := kbc_aosp_defconfig
 TARGET_KERNEL_SOURCE := kernel/samsung/hlte
 #TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-linux-androideabi-
+TARGET_KERNEL_HAVE_EXFAT := true
 
 # Audio
 QCOM_CSDCLIENT_ENABLED := false
