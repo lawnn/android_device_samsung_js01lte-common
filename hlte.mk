@@ -42,10 +42,10 @@ $(call inherit-product-if-exists, frameworks/native/build/phone-xxxhdpi-3072-hwu
 PRODUCT_COPY_FILES += \
     external/ant-wireless/antradio-library/com.dsi.ant.antradio_library.xml:system/etc/permissions/com.dsi.ant.antradio_library.xml \
     frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
-    frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/etc/permissions/android.hardware.nfc.hce.xml \
     frameworks/native/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml \
     frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
     frameworks/native/data/etc/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml \
+    frameworks/native/data/etc/com.nxp.mifare.xml:system/etc/permissions/com.nxp.mifare.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml
 
 # Audio
@@ -117,12 +117,21 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml
 
 # NFC
+ifeq ($(DEVICE_NFC_SONY),yes)
+PRODUCT_PACKAGES += \
+    com.android.nfc_extras \
+    NfcSony \
+    Tag
+else
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/etc/permissions/android.hardware.nfc.hce.xml
+
 PRODUCT_PACKAGES += \
     com.android.nfc_extras \
     NfcNci \
     nfc_nci.bcm2079x.msm8974 \
     Tag
-
+endif
 # Radio
 PRODUCT_PACKAGES += \
     libril_shim
