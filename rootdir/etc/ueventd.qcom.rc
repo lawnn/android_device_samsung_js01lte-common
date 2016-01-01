@@ -344,3 +344,9 @@ v/ppp                  0660   radio      vpn
 /sys/devices/f9968000.i2c/i2c-12/12-0068/iio:device* pedometer_int_thresh               0660   system     radio
 /sys/devices/f9968000.i2c/i2c-12/12-0068/iio:device* pedometer_step_thresh              0660   system     radio
 
+# ISDB-Tmm
+/dev/mmtuneri2c       0660    system    system
+/dev/mmtunerspi       0660    system    system
+
+#JPN CPRM
+/dev/block/mmcblk1	0660	root	system
