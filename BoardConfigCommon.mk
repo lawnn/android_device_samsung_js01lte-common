@@ -64,7 +64,6 @@ BOARD_RIL_CLASS := ../../../device/samsung/hlte-common/ril
 
 # Graphics
 TARGET_HAVE_NEW_GRALLOC := true
-TARGET_REQUIRES_SYNCHRONOUS_SETSURFACE := true
 
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
