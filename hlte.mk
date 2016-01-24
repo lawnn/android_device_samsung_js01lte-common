@@ -56,6 +56,19 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/mixer_paths.xml:system/etc/mixer_paths.xml \
     $(LOCAL_PATH)/audio/silence.wav:system/etc/sound/silence.wav
 
+# Busybox
+PRODUCT_PACKAGES += \
+    busybox
+
+# Doze
+PRODUCT_PACKAGES += \
+    SamsungDoze
+
+# Data
+PRODUCT_PACKAGES += \
+    librmnetctl \
+    rmnetcli
+
 # GPS
 PRODUCT_PACKAGES += \
     gps.msm8974
@@ -64,7 +77,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     camera.msm8974 \
     libstlport \
-    libxml2
+    libxml2 \
+    Snap
 
 PRODUCT_PACKAGES += \
     CMSPen
@@ -82,6 +96,11 @@ PRODUCT_COPY_FILES += \
 # IR
 PRODUCT_PACKAGES += \
     consumerir.msm8974
+
+# IPv6 tethering
+PRODUCT_PACKAGES += \
+    ebtables \
+    ethertypes
 
 # Keylayouts
 PRODUCT_COPY_FILES += \

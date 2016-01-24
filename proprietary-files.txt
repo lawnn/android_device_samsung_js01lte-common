@@ -261,6 +261,7 @@ vendor/lib/egl/libGLESv1_CM_adreno.so
 vendor/lib/egl/libGLESv2_adreno.so
 vendor/lib/egl/libq3dtools_adreno.so
 vendor/lib/libadreno_utils.so
+vendor/lib/libbccQTI.so
 vendor/lib/libC2D2.so
 vendor/lib/libc2d30-a3xx.so
 vendor/lib/libCB.so
@@ -319,6 +320,7 @@ bin/time_daemon
 vendor/lib/libTimeService.so
 
 # Wi-Fi
+bin/radish
 etc/wifi/bcmdhd_apsta.bin
 etc/wifi/bcmdhd_mfg.bin
 etc/wifi/bcmdhd_sta.bin

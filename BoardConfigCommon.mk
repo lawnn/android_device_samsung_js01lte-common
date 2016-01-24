@@ -75,10 +75,6 @@ BOARD_NFC_HAL_SUFFIX := msm8974
 # Use HW crypto for ODE
 TARGET_HW_DISK_ENCRYPTION := true
 
-# Power HAL
-TARGET_POWERHAL_VARIANT := qcom
-TARGET_POWERHAL_SET_INTERACTIVE_EXT := $(LOCAL_PATH)/power/power_ext.c
-
 # Recovery
 BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_HAS_NO_MISC_PARTITION := true
@@ -93,9 +89,6 @@ TARGET_USERIMAGES_USE_F2FS := true
 # SELinux
 -include device/qcom/sepolicy/sepolicy.mk
 #BOARD_SEPOLICY_DIRS += device/samsung/hlte-common/sepolicy
-
-# Sensors
-TARGET_NO_SENSOR_PERMISSION_CHECK := true
 
 # Wifi
 BOARD_HAVE_SAMSUNG_WIFI := true
