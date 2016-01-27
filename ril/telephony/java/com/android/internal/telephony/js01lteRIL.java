@@ -52,7 +52,7 @@ import com.android.internal.telephony.uicc.IccCardStatus;
  * Qualcomm RIL for the Samsung msm8974 family.
  * {@hide}
  */
-public class hlteRIL extends RIL implements CommandsInterface {
+public class js01lteRIL extends RIL implements CommandsInterface {
 
     private boolean setPreferredNetworkTypeSeen = false;
     private AudioManager mAudioManager;
@@ -63,12 +63,12 @@ public class hlteRIL extends RIL implements CommandsInterface {
     private static final int RIL_REQUEST_DIAL_EMERGENCY = 10001;
     public static final long SEND_SMS_TIMEOUT_IN_MS = 30000;
 
-    public hlteRIL(Context context, int preferredNetworkType, int cdmaSubscription) {
+    public js01lteRIL(Context context, int preferredNetworkType, int cdmaSubscription) {
         this(context, preferredNetworkType, cdmaSubscription, null);
         mAudioManager = (AudioManager)mContext.getSystemService(Context.AUDIO_SERVICE);
     }
 
-    public hlteRIL(Context context, int preferredNetworkType,
+    public js01lteRIL(Context context, int preferredNetworkType,
             int cdmaSubscription, Integer instanceId) {
         super(context, preferredNetworkType, cdmaSubscription, instanceId);
         mAudioManager = (AudioManager)mContext.getSystemService(Context.AUDIO_SERVICE);

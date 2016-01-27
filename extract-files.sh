@@ -46,13 +46,13 @@ else
   fi
 fi
 
-BASE=../../../vendor/$VENDOR/hlte-common/proprietary
+BASE=../../../vendor/$VENDOR/js01lte-common/proprietary
 rm -rf $BASE/*
 
 DEVBASE=../../../vendor/$VENDOR/$DEVICE/proprietary
 rm -rf $DEVBASE/*
 
-extract ../../$VENDOR/hlte-common/proprietary-files.txt $BASE
+extract ../../$VENDOR/js01lte-common/proprietary-files.txt $BASE
 extract ../../$VENDOR/$DEVICE/proprietary-files.txt $DEVBASE
 
 ./setup-makefiles.sh

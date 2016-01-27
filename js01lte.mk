@@ -17,7 +17,7 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 # Get non-open-source specific aspects
-$(call inherit-product-if-exists, vendor/samsung/hlte-common/hlte-common-vendor.mk)
+$(call inherit-product-if-exists, vendor/samsung/js01lte-common/js01lte-common-vendor.mk)
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
@@ -143,9 +143,6 @@ PRODUCT_PACKAGES += \
     nfc_nci.bcm2079x.msm8974 \
     Tag
 endif
-# Radio
-PRODUCT_PACKAGES += \
-    libril_shim
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/nfcee_access.xml:system/etc/nfcee_access.xml \
