@@ -65,9 +65,9 @@ PRODUCT_PACKAGES += \
     SamsungDoze
 
 # Data
-PRODUCT_PACKAGES += \
-    librmnetctl \
-    rmnetcli
+#PRODUCT_PACKAGES += \
+#    librmnetctl \
+#    rmnetcli
 
 # GPS
 PRODUCT_PACKAGES += \
