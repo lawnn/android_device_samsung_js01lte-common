@@ -18,9 +18,5 @@
   {
     "repository": "android_packages_apps_CMSPen",
     "target_path": "packages/apps/CMSPen"
-  },
-  {		
-    "repository": "android_vendor_qcom_opensource_dataservices",		
-    "target_path": "vendor/qcom/opensource/dataservices"
   }
 ]
