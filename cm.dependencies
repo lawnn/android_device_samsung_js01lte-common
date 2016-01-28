@@ -8,10 +8,12 @@
     "target_path": "kernel/samsung/msm8974"
   },
   {
+    "account": "CyanogenMod",
     "repository": "android_external_busybox",
     "target_path": "external/busybox"
   },
   {
+    "account": "CyanogenMod",
     "repository": "android_external_stlport",
     "target_path": "external/stlport"
   },
