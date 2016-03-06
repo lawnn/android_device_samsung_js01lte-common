@@ -53,8 +53,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_effects.conf:system/vendor/etc/audio_effects.conf \
     $(LOCAL_PATH)/audio/audio_platform_info.xml:system/etc/audio_platform_info.xml \
     $(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf \
-    $(LOCAL_PATH)/audio/mixer_paths.xml:system/etc/mixer_paths.xml \
-    $(LOCAL_PATH)/audio/silence.wav:system/etc/sound/silence.wav
+    $(LOCAL_PATH)/audio/mixer_paths.xml:system/etc/mixer_paths.xml
 
 # Busybox
 PRODUCT_PACKAGES += \
@@ -63,11 +62,6 @@ PRODUCT_PACKAGES += \
 # Doze
 PRODUCT_PACKAGES += \
     SamsungDoze
-
-# Data
-#PRODUCT_PACKAGES += \
-#    librmnetctl \
-#    rmnetcli
 
 # GPS
 PRODUCT_PACKAGES += \
@@ -97,11 +91,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     consumerir.msm8974
 
-# IPv6 tethering
-PRODUCT_PACKAGES += \
-    ebtables \
-    ethertypes
-
 # Keylayouts
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/Button_Jack.kl:system/usr/keylayout/Button_Jack.kl \
@@ -118,10 +107,6 @@ PRODUCT_PACKAGES += \
 # Lights
 PRODUCT_PACKAGES += \
     lights.msm8974
-
-# Boot Silent Audio
-PRODUCT_PACKAGES += \
-    tinyplay
 
 # Media
 PRODUCT_COPY_FILES += \
